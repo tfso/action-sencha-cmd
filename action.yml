@@ -1,0 +1,19 @@
+name: Sencha Cmd
+description: A GitHub Action wrapping Sencha Cmd
+
+inputs:
+  dir:
+    description: 'Root directory for ExtJS application'
+    required: true
+    default: './web'
+  cmd:
+    description: 'Command to run'
+    required: true
+    default: 'app build'
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.dir }}
+    - ${{ inputs.cmd }}
